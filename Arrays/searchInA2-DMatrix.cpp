@@ -11,6 +11,23 @@ bool searchMatrix(vector<vector<int>>& mat, int target) {
         return false;
 }
 
+bool searchMatrix(vector<vector<int>>& mat, int target) {
+        int low=0, high=(mat.size()*mat[0].size())-1;
+        while(low<=high){
+            int mid=(low+high)/2;
+            int row=mid/mat[0].size();
+            int col=mid%mat[0].size();
+            if(mat[row][col]==target){
+                return true;
+            }else if(mat[row][col]>target){
+                high=mid-1;
+            }else{
+                low=mid+1;
+            }
+        }
+        return false;
+}
+
 // https://leetcode.com/problems/search-a-2d-matrix/
 
 class Solution {
